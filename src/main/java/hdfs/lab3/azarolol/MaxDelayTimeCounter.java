@@ -7,7 +7,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 public class MaxDelayTimeCounter {
     final static String AppName = "MaxDelayTimeCounter";
 
-    public static void mian (String[] args) throws Exception {
+    public static void main (String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName(AppName);
         JavaSparkContext sc = new JavaSparkContext(conf);
 

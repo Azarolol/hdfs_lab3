@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00cebd36-cb72-4cd9-a078-ee6c8ca2890f" name="Changes" comment="" />
+    <list default="true" id="00cebd36-cb72-4cd9-a078-ee6c8ca2890f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/hdfs/lab3/azarolol/MaxDelayTimeCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hdfs/lab3/azarolol/MaxDelayTimeCounter.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1636655381232</updated>
       <workItem from="1636655382986" duration="1327000" />
-      <workItem from="1636656823152" duration="1284000" />
+      <workItem from="1636656823152" duration="1698000" />
     </task>
     <servers />
   </component>
