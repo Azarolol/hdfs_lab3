@@ -1,5 +1,6 @@
 package hdfs.lab3.azarolol;
 
+import org.apache.spark.SparkConf;
 
 
 public class MaxDelayTime {
