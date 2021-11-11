@@ -6,6 +6,6 @@ public class MaxDelayTime {
         SparkConf conf = new SparkConf().setAppName(AppName);
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD
+        JavaRDD<String> = sc.textFile("")
     }
 }
