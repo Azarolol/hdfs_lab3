@@ -4,7 +4,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
-public class MaxDelayTime {
+public class MaxDelayTimeCounter {
     final static String AppName = "MaxDelayTimeCounter";
 
     public static void mian (String[] args) throws Exception {
@@ -14,6 +14,6 @@ public class MaxDelayTime {
         JavaRDD<String> airports = sc.textFile("L_AIRPORT_ID.csv");
         JavaRDD<String> flights = sc.textFile("664600583_T_ONTIME_sample.csv");
 
-        
+
     }
 }
