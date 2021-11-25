@@ -1,6 +1,8 @@
 package hdfs.lab3.azarolol;
 
-public class FlightStat {
+import scala.Serializable;
+
+public class FlightStat implements Serializable {
     private String departureAirport;
     private String destinationAirport;
     private boolean ifCancelled;

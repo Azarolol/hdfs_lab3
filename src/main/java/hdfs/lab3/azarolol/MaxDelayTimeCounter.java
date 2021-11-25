@@ -1,8 +1,10 @@
 package hdfs.lab3.azarolol;
 
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import scala.Tuple2;
 
 public class MaxDelayTimeCounter {
     final static String AppName = "MaxDelayTimeCounter";
@@ -17,7 +19,7 @@ public class MaxDelayTimeCounter {
 
     }
 
-    public JavaRDD<> parseFlights(JavaRDD<String> flights) {
-
+    public JavaPairRDD<Tuple2<String, String>, FlightsStat> parseFlights(JavaRDD<String> flights) {
+        
     }
 }
