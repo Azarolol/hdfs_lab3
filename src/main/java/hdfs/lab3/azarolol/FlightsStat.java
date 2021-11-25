@@ -78,5 +78,7 @@ public class FlightsStat implements Serializable {
     }
 
     @Override
-    
+    public String toString() {
+        String 
+    }
 }
