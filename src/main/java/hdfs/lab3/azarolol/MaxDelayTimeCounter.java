@@ -6,11 +6,14 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
 
+import java.util.Objects;
+
 public class MaxDelayTimeCounter {
     final static String AppName = "MaxDelayTimeCounter";
     final static String SEPARATOR = ",";
     final static int ORIGIN_AIRPORT_ID_INDEX = 11;
     final static int DEST_AIRPORT_ID_INDEX = 14;
+    final static int CANCELLED_INDEX = 
 
     public static void main (String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -29,7 +32,7 @@ public class MaxDelayTimeCounter {
                     String departureAirportID = flightInformation[ORIGIN_AIRPORT_ID_INDEX];
                     String destinationAirportID = flightInformation[DEST_AIRPORT_ID_INDEX];
                     Tuple2<String, String> key = new Tuple2<>(departureAirportID, destinationAirportID);
-                    boolean ifCancelled = flightInformation[]
+                    boolean ifCancelled = Objects.equals(flightInformation[CANCELLED_INDEX], "1.00");
                 }
         )
     }
