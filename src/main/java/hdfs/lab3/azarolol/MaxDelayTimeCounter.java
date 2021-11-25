@@ -45,7 +45,7 @@ public class MaxDelayTimeCounter {
                 s -> new FlightsStat(s, airportsBroadcasted.value())
         );
 
-        flightsWithAirport.saveAsTextFile("output.txt");
+        flightsWithAirport.saveAsTextFile("output");
     }
 
     public static JavaPairRDD<Tuple2<String, String>, FlightStat> parseFlights(JavaRDD<String> flights) {
