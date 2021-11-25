@@ -8,12 +8,12 @@ import java.util.Map;
 public class FlightsStat implements Serializable {
     private String departureAirport;
     private String destinationAirport;
-    private int numberOfDelayedFlights;
-    private int numberOfCancelledFlights;
+    private float numberOfDelayedFlights;
+    private float numberOfCancelledFlights;
     private float maxDelay;
-    private int numberOfFlights;
+    private float numberOfFlights;
 
-    public FlightsStat(int numberOfDelayedFlights, int numberOfCancelledFlights, float maxDelay, int numberOfFlights) {
+    public FlightsStat(float numberOfDelayedFlights, float numberOfCancelledFlights, float maxDelay, float numberOfFlights) {
         this.numberOfDelayedFlights = numberOfDelayedFlights;
         this.numberOfCancelledFlights = numberOfCancelledFlights;
         this.maxDelay = maxDelay;
@@ -51,15 +51,15 @@ public class FlightsStat implements Serializable {
         return maxDelay;
     }
 
-    public int getNumberOfCancelledFlights() {
+    public float getNumberOfCancelledFlights() {
         return numberOfCancelledFlights;
     }
 
-    public int getNumberOfDelayedFlights() {
+    public float getNumberOfDelayedFlights() {
         return numberOfDelayedFlights;
     }
 
-    public int getNumberOfFlights() {
+    public float getNumberOfFlights() {
         return numberOfFlights;
     }
 
