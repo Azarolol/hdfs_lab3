@@ -14,6 +14,7 @@ public class MaxDelayTimeCounter {
     final static int ORIGIN_AIRPORT_ID_INDEX = 11;
     final static int DEST_AIRPORT_ID_INDEX = 14;
     final static int CANCELLED_INDEX = 19;
+    final static int DELAY_INDEX = 17;
 
     public static void main (String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -25,7 +26,7 @@ public class MaxDelayTimeCounter {
 
     }
 
-    public JavaPairRDD<Tuple2<String, String>, FlightsStat> parseFlights(JavaRDD<String> flights) {
+    public JavaPairRDD<Tuple2<String, String>, FlightStat> parseFlights(JavaRDD<String> flights) {
         return flights.mapToPair(
                 s -> {
                     String[] flightInformation = s.split(SEPARATOR);
@@ -33,7 +34,9 @@ public class MaxDelayTimeCounter {
                     String destinationAirportID = flightInformation[DEST_AIRPORT_ID_INDEX];
                     Tuple2<String, String> key = new Tuple2<>(departureAirportID, destinationAirportID);
                     boolean ifCancelled = Objects.equals(flightInformation[CANCELLED_INDEX], "1.00");
-                    int delayTime = flightInformation[]
+                    int delayTime = Integer.parseInt(flightInformation[DELAY_INDEX]);
+                    FlightStat value = new FlightStat(ifCancelled, delayTime);
+                    
                 }
         )
     }
