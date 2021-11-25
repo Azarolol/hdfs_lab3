@@ -6,7 +6,7 @@ public class FlightStat implements Serializable {
     private boolean cancelled;
     private float delayTime;
 
-    public FlightStat(boolean ifCancelled, int delayTime) {
+    public FlightStat(boolean ifCancelled, float delayTime) {
         this.delayTime = delayTime;
         this.cancelled = ifCancelled;
     }
