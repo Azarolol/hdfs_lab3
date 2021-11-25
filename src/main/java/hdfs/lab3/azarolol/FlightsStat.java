@@ -81,6 +81,7 @@ public class FlightsStat implements Serializable {
     public String toString() {
         String percentageOfCancelledFlights = String.valueOf(this.numberOfCancelledFlights / this.numberOfFlights);
         String percentageOfDelayedFlights = String.valueOf(this.numberOfDelayedFlights / this.numberOfFlights);
-        
+        return "From " + destinationAirport + " to " + destinationAirport + ":\n"
+                + ""
     }
 }
