@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class MaxDelayTimeCounter {
-    final static String AppName = "MaxDelayTimeCounter";
+    final static String APP_NAME = "MaxDelayTimeCounter";
     final static String SEPARATOR = ",";
     final static int ORIGIN_AIRPORT_ID_INDEX = 11;
     final static int DEST_AIRPORT_ID_INDEX = 14;
@@ -28,7 +28,7 @@ public class MaxDelayTimeCounter {
     final static String OUTPUT_PATH = "output";
 
     public static void main (String[] args) {
-        SparkConf conf = new SparkConf().setAppName(AppName);
+        SparkConf conf = new SparkConf().setAppName(APP_NAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         JavaRDD<String> airports = sc.textFile(AIRPORTS_FILENAME);
