@@ -21,6 +21,8 @@ public class MaxDelayTimeCounter {
     final static int AIRPORT_NAME_INDEX = 1;
     final static String FLIGHTS_FIRST_LINE_PREFIX = "\"";
     final static String AIRPORTS_FIRST_LINE_PREFIX = "C";
+    final static String EMPTY_STRING = "";
+    final static String CANCELLED_STATUS = "1.00";
 
     public static void main (String[] args) {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -53,10 +55,10 @@ public class MaxDelayTimeCounter {
                     String departureAirportID = flightInformation[ORIGIN_AIRPORT_ID_INDEX];
                     String destinationAirportID = flightInformation[DEST_AIRPORT_ID_INDEX];
                     Tuple2<String, String> key = new Tuple2<>(departureAirportID, destinationAirportID);
-                    boolean ifCancelled = Objects.equals(flightInformation[CANCELLED_INDEX], "1.00");
+                    boolean ifCancelled = Objects.equals(flightInformation[CANCELLED_INDEX], CANCELLED_STATUS);
                     String delayTime = flightInformation[DELAY_INDEX];
                     float delayTimeParsed;
-                    if (delayTime != "") {
+                    if (!Objects.equals(delayTime, EMPTY_STRING)) {
                          delayTimeParsed = Float.parseFloat(flightInformation[DELAY_INDEX]);
                     } else {
                         delayTimeParsed = 0;
