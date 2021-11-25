@@ -23,10 +23,11 @@ public class MaxDelayTimeCounter {
         JavaRDD<String> airports = sc.textFile("L_AIRPORT_ID.csv");
         JavaRDD<String> flights = sc.textFile("664600583_T_ONTIME_sample.csv");
 
-
+        JavaPairRDD<Tuple2<String, String>, FlightStat> parsedFlights = parseFlights(flights);
+        
     }
 
-    public JavaPairRDD<Tuple2<String, String>, FlightStat> parseFlights(JavaRDD<String> flights) {
+    public static JavaPairRDD<Tuple2<String, String>, FlightStat> parseFlights(JavaRDD<String> flights) {
         return flights.mapToPair(
                 s -> {
                     String[] flightInformation = s.split(SEPARATOR);
@@ -36,8 +37,8 @@ public class MaxDelayTimeCounter {
                     boolean ifCancelled = Objects.equals(flightInformation[CANCELLED_INDEX], "1.00");
                     int delayTime = Integer.parseInt(flightInformation[DELAY_INDEX]);
                     FlightStat value = new FlightStat(ifCancelled, delayTime);
-                    
+                    return new Tuple2<>(key, value);
                 }
-        )
+        );
     }
 }
