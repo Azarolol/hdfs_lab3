@@ -8,6 +8,13 @@ public class FlightsStat implements Serializable {
     private int maxDelay;
     private int numberOfFlights;
 
+    public FlightsStat() {
+        this.numberOfDelayedFlights = 0;
+        this.numberOfCancelledFlights = 0;
+        this.maxDelay = 0;
+        this.numberOfFlights = 0;
+    }
+
     public FlightsStat(int numberOfDelayedFlights, int numberOfCancelledFlights, int maxDelay, int numberOfFlights) {
         this.numberOfDelayedFlights = numberOfDelayedFlights;
         this.numberOfCancelledFlights = numberOfCancelledFlights;
@@ -31,22 +38,20 @@ public class FlightsStat implements Serializable {
         return numberOfFlights;
     }
 
-    public static void addFlightStat(FlightStat flightStat) {
-        return new FlightsStat(
-
-        )
-        this.numberOfFlights++;
+    public static FlightsStat addFlightStat(FlightsStat flightsStat, FlightStat flightStat) {
+        flightsStat.numberOfFlights++;
         int flightDelay = flightStat.getDelayTime();
         if (flightDelay > 0) {
-            this.numberOfDelayedFlights++;
-            this.maxDelay = Math.max(this.maxDelay, flightDelay);
+            flightsStat.numberOfDelayedFlights++;
+            flightsStat.maxDelay = Math.max(flightsStat.maxDelay, flightDelay);
         }
         if (flightStat.isCancelled()) {
-            this.numberOfCancelledFlights++;
+            flightsStat.numberOfCancelledFlights++;
         }
+        return flightsStat;
     }
 
-    public FlightsStat combine(FlightsStat first, FlightsStat second) {
+    public static FlightsStat combine(FlightsStat first, FlightsStat second) {
         return new FlightsStat(
                 first.getNumberOfDelayedFlights() + second.getNumberOfDelayedFlights(),
                 first.getNumberOfCancelledFlights() + second.getNumberOfCancelledFlights(),
