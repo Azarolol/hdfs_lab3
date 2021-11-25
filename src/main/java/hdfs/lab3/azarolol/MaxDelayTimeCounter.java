@@ -10,7 +10,7 @@ public class MaxDelayTimeCounter {
     final static String AppName = "MaxDelayTimeCounter";
     final static String SEPARATOR = ",";
     final static int ORIGIN_AIRPORT_ID_INDEX = 11;
-    final static int DEST_AIRPORT_ID_INDEX = 
+    final static int DEST_AIRPORT_ID_INDEX = 14;
 
     public static void main (String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -28,7 +28,8 @@ public class MaxDelayTimeCounter {
                     String[] flightInformation = s.split(SEPARATOR);
                     String departureAirportID = flightInformation[ORIGIN_AIRPORT_ID_INDEX];
                     String destinationAirportID = flightInformation[DEST_AIRPORT_ID_INDEX];
-
+                    Tuple2<String, String> key = new Tuple2<>(departureAirportID, destinationAirportID);
+                    
                 }
         )
     }
