@@ -7,6 +7,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.broadcast.Broadcast;
 import scala.Tuple2;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class MaxDelayTimeCounter {
@@ -27,7 +28,7 @@ public class MaxDelayTimeCounter {
         JavaPairRDD<Tuple2<String, String>, FlightStat> parsedFlights = parseFlights(flights);
         JavaPairRDD<Tuple2<String, String>, FlightsStat> flightsStat = parsedFlights.aggregateByKey(new FlightsStat(), FlightsStat :: addFlightStat, FlightsStat :: combine);
 
-        final Broadcast<Map<String, >>
+        final Broadcast<Map<String, String>>
     }
 
     public static JavaPairRDD<Tuple2<String, String>, FlightStat> parseFlights(JavaRDD<String> flights) {
