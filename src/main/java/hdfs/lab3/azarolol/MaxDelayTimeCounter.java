@@ -22,6 +22,7 @@ public class MaxDelayTimeCounter {
     final static String FLIGHTS_FIRST_LINE_PREFIX = "\"";
     final static String AIRPORTS_FIRST_LINE_PREFIX = "C";
     final static String EMPTY_STRING = "";
+    final static String QUOTATIONS = "\"";
     final static String CANCELLED_STATUS = "1.00";
     final static String AIRPORTS_FILENAME = "L_AIRPORT_ID.csv";
     final static String FLIGHTS_FILENAME = "664600583_T_ONTIME_sample.csv";
@@ -75,7 +76,7 @@ public class MaxDelayTimeCounter {
     public static JavaPairRDD<String, String> parseAirports(JavaRDD<String> airports) {
         return airports.mapToPair(
                 s -> {
-                    String[] airportInformation = s.replaceAll(, EMPTY_STRING).split(SEPARATOR, 2);
+                    String[] airportInformation = s.replaceAll(QUOTATIONS, EMPTY_STRING).split(SEPARATOR, 2);
                     String airportID = airportInformation[AIRPORT_ID_INDEX];
                     String airportName = airportInformation[AIRPORT_NAME_INDEX];
                     return new Tuple2<>(airportID, airportName);
