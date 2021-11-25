@@ -19,7 +19,8 @@ public class MaxDelayTimeCounter {
     final static int DELAY_INDEX = 17;
     final static int AIRPORT_ID_INDEX = 0;
     final static int AIRPORT_NAME_INDEX = 1;
-    final static String FIRST_LINE_PREFIX = "\"";
+    final static String FLIGHTS_FIRST_LINE_PREFIX = "\"";
+    final static String AIRPORTS_FIRST_LINE_PREFIX = "C";
 
     public static void main (String[] args) {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -29,11 +30,13 @@ public class MaxDelayTimeCounter {
         JavaRDD<String> flights = sc.textFile("664600583_T_ONTIME_sample.csv");
 
         JavaPairRDD<Tuple2<String, String>, FlightStat> parsedFlights = parseFlights(flights.filter(
-                s -> !s.startsWith(FIRST_LINE_PREFIX)
+                s -> !s.startsWith(FLIGHTS_FIRST_LINE_PREFIX)
         ));
         JavaPairRDD<Tuple2<String, String>, FlightsStat> flightsStat = parsedFlights.aggregateByKey(new FlightsStat(), FlightsStat :: addFlightStat, FlightsStat :: combine);
 
-        JavaPairRDD<String, String> stringAirportDataMap = parseAirports(airports);
+        JavaPairRDD<String, String> stringAirportDataMap = parseAirports(airports.filter(
+                s -> !s.startsWith(AIRPORTS_FIRST_LINE_PREFIX)
+        ));
         final Broadcast<Map<String, String>> airportsBroadcasted = sc.broadcast(stringAirportDataMap.collectAsMap());
 
         JavaRDD<FlightsStat> flightsWithAirport = flightsStat.map(
