@@ -17,6 +17,8 @@ public class MaxDelayTimeCounter {
     final static int DEST_AIRPORT_ID_INDEX = 14;
     final static int CANCELLED_INDEX = 19;
     final static int DELAY_INDEX = 17;
+    final static int AIRPORT_ID_INDEX = 0;
+    final static int AIRPORT_NAME_INDEX = 1;
 
     public static void main (String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -28,7 +30,9 @@ public class MaxDelayTimeCounter {
         JavaPairRDD<Tuple2<String, String>, FlightStat> parsedFlights = parseFlights(flights);
         JavaPairRDD<Tuple2<String, String>, FlightsStat> flightsStat = parsedFlights.aggregateByKey(new FlightsStat(), FlightsStat :: addFlightStat, FlightsStat :: combine);
 
-        final Broadcast<Map<String, String>>
+        JavaPairRDD<String, String> stringAirportDataMap = parseAirports(airports);
+
+        final Broadcast<Map<String, String>> airportsBroadcasted = sc.broadcast(stringAirportDataMap.collectAsMap());
     }
 
     public static JavaPairRDD<Tuple2<String, String>, FlightStat> parseFlights(JavaRDD<String> flights) {
@@ -42,6 +46,17 @@ public class MaxDelayTimeCounter {
                     int delayTime = Integer.parseInt(flightInformation[DELAY_INDEX]);
                     FlightStat value = new FlightStat(ifCancelled, delayTime);
                     return new Tuple2<>(key, value);
+                }
+        );
+    }
+
+    public static JavaPairRDD<String, String> parseAirports(JavaRDD<String> airports) {
+        return airports.mapToPair(
+                s -> {
+                    String[] airportInformation = s.split(SEPARATOR);
+                    String airportID = airportInformation[AIRPORT_ID_INDEX];
+                    String airportName = airportInformation[AIRPORT_NAME_INDEX];
+                    return new Tuple2<>(airportID, airportName);
                 }
         );
     }
