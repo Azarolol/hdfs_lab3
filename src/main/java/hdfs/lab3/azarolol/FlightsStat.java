@@ -22,6 +22,8 @@ public class FlightsStat implements Serializable {
         this.numberOfFlights = numberOfFlights;
     }
 
+    public FlightsStat (FlightsStat flightsStat, )
+
     public int getMaxDelay() {
         return maxDelay;
     }
