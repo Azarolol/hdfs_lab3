@@ -29,7 +29,7 @@ public class MaxDelayTimeCounter {
                     String departureAirportID = flightInformation[ORIGIN_AIRPORT_ID_INDEX];
                     String destinationAirportID = flightInformation[DEST_AIRPORT_ID_INDEX];
                     Tuple2<String, String> key = new Tuple2<>(departureAirportID, destinationAirportID);
-                    
+                    boolean ifCancelled = flightInformation[]
                 }
         )
     }
