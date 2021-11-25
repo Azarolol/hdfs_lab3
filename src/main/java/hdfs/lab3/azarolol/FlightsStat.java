@@ -65,13 +65,14 @@ public class FlightsStat implements Serializable {
 
     public static FlightsStat addFlightStat(FlightsStat flightsStat, FlightStat flightStat) {
         flightsStat.numberOfFlights++;
-        float flightDelay = flightStat.getDelayTime();
-        if (flightDelay > 0) {
-            flightsStat.numberOfDelayedFlights++;
-            flightsStat.maxDelay = Math.max(flightsStat.maxDelay, flightDelay);
-        }
         if (flightStat.isCancelled()) {
             flightsStat.numberOfCancelledFlights++;
+        } else {
+            float flightDelay = flightStat.getDelayTime();
+            if (flightDelay > 0) {
+                flightsStat.numberOfDelayedFlights++;
+                flightsStat.maxDelay = Math.max(flightsStat.maxDelay, flightDelay);
+            }
         }
         return flightsStat;
     }
