@@ -32,6 +32,9 @@ public class FlightsStat implements Serializable {
     }
 
     public static void addFlightStat(FlightStat flightStat) {
+        return new FlightsStat(
+
+        )
         this.numberOfFlights++;
         int flightDelay = flightStat.getDelayTime();
         if (flightDelay > 0) {
