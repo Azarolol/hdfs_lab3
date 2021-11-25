@@ -13,7 +13,7 @@ public class MaxDelayTimeCounter {
     final static String SEPARATOR = ",";
     final static int ORIGIN_AIRPORT_ID_INDEX = 11;
     final static int DEST_AIRPORT_ID_INDEX = 14;
-    final static int CANCELLED_INDEX = 
+    final static int CANCELLED_INDEX = 19;
 
     public static void main (String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -33,6 +33,7 @@ public class MaxDelayTimeCounter {
                     String destinationAirportID = flightInformation[DEST_AIRPORT_ID_INDEX];
                     Tuple2<String, String> key = new Tuple2<>(departureAirportID, destinationAirportID);
                     boolean ifCancelled = Objects.equals(flightInformation[CANCELLED_INDEX], "1.00");
+                    int delayTime = flightInformation[]
                 }
         )
     }
