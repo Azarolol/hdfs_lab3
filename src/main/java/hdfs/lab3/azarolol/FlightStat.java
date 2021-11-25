@@ -3,8 +3,8 @@ package hdfs.lab3.azarolol;
 import scala.Serializable;
 
 public class FlightStat implements Serializable {
-    private boolean cancelled;
-    private float delayTime;
+    private final boolean cancelled;
+    private final float delayTime;
 
     public FlightStat(boolean ifCancelled, float delayTime) {
         this.delayTime = delayTime;
