@@ -76,4 +76,7 @@ public class FlightsStat implements Serializable {
                 first.getNumberOfFlights() + second.getNumberOfFlights()
         );
     }
+
+    @Override
+    
 }
