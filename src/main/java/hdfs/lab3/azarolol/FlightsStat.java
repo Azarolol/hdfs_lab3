@@ -78,8 +78,8 @@ public class FlightsStat implements Serializable {
 
     @Override
     public String toString() {
-        String percentageOfCancelledFlights = String.valueOf(this.numberOfCancelledFlights / this.numberOfFlights);
-        String percentageOfDelayedFlights = String.valueOf(this.numberOfDelayedFlights / this.numberOfFlights);
+        String percentageOfCancelledFlights = String.valueOf(this.numberOfCancelledFlights / this.numberOfFlights * 100);
+        String percentageOfDelayedFlights = String.valueOf(this.numberOfDelayedFlights / this.numberOfFlights * 100);
         return "From " + departureAirport + " to " + destinationAirport + ":\n"
                 + "Maximal delay time = " + this.maxDelay + "\n"
                 + percentageOfDelayedFlights + "% of flights were delayed\n"
