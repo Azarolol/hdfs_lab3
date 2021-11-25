@@ -1,6 +1,5 @@
 package hdfs.lab3.azarolol;
 
-import org.apache.spark.api.java.JavaPairRDD;
 import scala.Serializable;
 import scala.Tuple2;
 
