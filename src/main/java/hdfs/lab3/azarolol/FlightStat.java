@@ -4,14 +4,14 @@ import scala.Serializable;
 
 public class FlightStat implements Serializable {
     private boolean cancelled;
-    private int delayTime;
+    private float delayTime;
 
     public FlightStat(boolean ifCancelled, int delayTime) {
         this.delayTime = delayTime;
         this.cancelled = ifCancelled;
     }
 
-    public int getDelayTime() {
+    public float getDelayTime() {
         return this.delayTime;
     }
 
