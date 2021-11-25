@@ -1,8 +1,14 @@
 package hdfs.lab3.azarolol;
 
+import org.apache.spark.api.java.JavaPairRDD;
 import scala.Serializable;
+import scala.Tuple2;
+
+import java.util.Map;
 
 public class FlightsStat implements Serializable {
+    private String departureAirport;
+    private String destinationAirport;
     private int numberOfDelayedFlights;
     private int numberOfCancelledFlights;
     private int maxDelay;
@@ -22,7 +28,16 @@ public class FlightsStat implements Serializable {
         this.numberOfFlights = numberOfFlights;
     }
 
-    public FlightsStat (FlightsStat flightsStat, )
+    public FlightsStat (Tuple2<Tuple2<String, String>, FlightsStat> flightsStat, Map<String, String> airportName) {
+        FlightsStat flightsStatInfo = flightsStat._2();
+        this.numberOfDelayedFlights = flightsStatInfo.getNumberOfDelayedFlights();
+        this.numberOfCancelledFlights = flightsStatInfo.getNumberOfCancelledFlights();
+        this.maxDelay = flightsStatInfo.getMaxDelay();
+        this.numberOfFlights = flightsStatInfo.getNumberOfFlights();
+
+        this.departureAirport = airportName.get(flightsStat._1()._1());
+        this.destinationAirport = airportName.get(flightsStat._1()._2());
+    }
 
     public int getMaxDelay() {
         return maxDelay;
