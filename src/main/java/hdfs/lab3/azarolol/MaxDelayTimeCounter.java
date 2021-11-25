@@ -75,7 +75,7 @@ public class MaxDelayTimeCounter {
     public static JavaPairRDD<String, String> parseAirports(JavaRDD<String> airports) {
         return airports.mapToPair(
                 s -> {
-                    String[] airportInformation = s.split(SEPARATOR, 2);
+                    String[] airportInformation = s.replaceAll(, EMPTY_STRING).split(SEPARATOR, 2);
                     String airportID = airportInformation[AIRPORT_ID_INDEX];
                     String airportName = airportInformation[AIRPORT_NAME_INDEX];
                     return new Tuple2<>(airportID, airportName);
