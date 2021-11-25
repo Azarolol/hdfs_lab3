@@ -34,15 +34,16 @@ public class FlightsStat implements Serializable {
     public FlightsStat(FlightStat flightStat) {
         this.numberOfDelayedFlights = 0;
         this.numberOfCancelledFlights = 0;
-        if (flightStat.isCancelled()) {
-            this.numberOfCancelledFlights = 1;
-        }
-        float delayTime = flightStat.getDelayTime();
         this.maxDelay = 0;
         this.numberOfFlights = 1;
-        if (delayTime > 0) {
-            this.maxDelay = delayTime;
-            this.numberOfDelayedFlights = 1;
+        if (flightStat.isCancelled()) {
+            this.numberOfCancelledFlights = 1;
+        } else {
+            float delayTime = flightStat.getDelayTime();
+            if (delayTime > 0) {
+                this.maxDelay = delayTime;
+                this.numberOfDelayedFlights = 1;
+            }
         }
     }
 
