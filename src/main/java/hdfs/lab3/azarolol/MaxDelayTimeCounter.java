@@ -8,7 +8,7 @@ import scala.Tuple2;
 
 public class MaxDelayTimeCounter {
     final static String AppName = "MaxDelayTimeCounter";
-    final static String SEPARATOR = 
+    final static String SEPARATOR = ",";
 
     public static void main (String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -23,8 +23,8 @@ public class MaxDelayTimeCounter {
     public JavaPairRDD<Tuple2<String, String>, FlightsStat> parseFlights(JavaRDD<String> flights) {
         return flights.mapToPair(
                 s -> {
-                    String[] flightsInformation = s.split(SEPARATOR)
-                    String departureAirportId =
+                    String[] flightsInformation = s.split(SEPARATOR);
+                    String departureAirportId = 
                 }
         )
     }
