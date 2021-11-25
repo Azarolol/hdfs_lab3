@@ -36,7 +36,7 @@ public class MaxDelayTimeCounter {
         JavaPairRDD<Tuple2<String, String>, FlightStat> parsedFlights = parseFlights(flights.filter(
                 s -> !s.startsWith(FLIGHTS_FIRST_LINE_PREFIX)
         ));
-        JavaPairRDD<Tuple2<String, String>, FlightsStat> flightsStat = parsedFlights.aggregateByKey(new FlightsStat(), FlightsStat :: addFlightStat, FlightsStat :: combine);
+        JavaPairRDD<Tuple2<String, String>, FlightsStat> flightsStat = parsedFlights.combineByKey(FlightsStat :: new, FlightsStat :: addFlightStat, FlightsStat :: combine);
 
         JavaPairRDD<String, String> stringAirportDataMap = parseAirports(airports.filter(
                 s -> !s.startsWith(AIRPORTS_FIRST_LINE_PREFIX)

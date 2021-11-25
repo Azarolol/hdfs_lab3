@@ -13,13 +13,6 @@ public class FlightsStat implements Serializable {
     private float maxDelay;
     private int numberOfFlights;
 
-    public FlightsStat() {
-        this.numberOfDelayedFlights = 0;
-        this.numberOfCancelledFlights = 0;
-        this.maxDelay = 0;
-        this.numberOfFlights = 0;
-    }
-
     public FlightsStat(int numberOfDelayedFlights, int numberOfCancelledFlights, float maxDelay, int numberOfFlights) {
         this.numberOfDelayedFlights = numberOfDelayedFlights;
         this.numberOfCancelledFlights = numberOfCancelledFlights;
@@ -36,6 +29,13 @@ public class FlightsStat implements Serializable {
 
         this.departureAirport = airportName.get(flightsStat._1()._1());
         this.destinationAirport = airportName.get(flightsStat._1()._2());
+    }
+
+    public FlightsStat(FlightStat flightStat) {
+        this.numberOfDelayedFlights = 0;
+        this.numberOfCancelledFlights = 0;
+        this.maxDelay = 0;
+        this.numberOfFlights = 0;
     }
 
     public float getMaxDelay() {
