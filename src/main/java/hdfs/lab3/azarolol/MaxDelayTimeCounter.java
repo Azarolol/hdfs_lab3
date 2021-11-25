@@ -25,6 +25,7 @@ public class MaxDelayTimeCounter {
     final static String CANCELLED_STATUS = "1.00";
     final static String AIRPORTS_FILENAME = "L_AIRPORT_ID.csv";
     final static String FLIGHTS_FILENAME = "664600583_T_ONTIME_sample.csv";
+    final static String OUTPUT_PATH = "output";
 
     public static void main (String[] args) {
         SparkConf conf = new SparkConf().setAppName(AppName);
@@ -47,7 +48,7 @@ public class MaxDelayTimeCounter {
                 s -> new FlightsStat(s, airportsBroadcasted.value())
         );
 
-        flightsWithAirport.saveAsTextFile("output");
+        flightsWithAirport.saveAsTextFile(OUTPUT_PATH);
     }
 
     public static JavaPairRDD<Tuple2<String, String>, FlightStat> parseFlights(JavaRDD<String> flights) {
