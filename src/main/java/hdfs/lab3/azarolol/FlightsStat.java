@@ -30,4 +30,8 @@ public class FlightsStat implements Serializable {
             this.numberOfCancelledFlights++;
         }
     }
+
+    public void combine(FlightsStat first, FlightsStat second) {
+        
+    }
 }
