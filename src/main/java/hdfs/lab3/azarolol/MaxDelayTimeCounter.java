@@ -16,4 +16,8 @@ public class MaxDelayTimeCounter {
 
 
     }
+
+    public JavaRDD<> parseFlights(JavaRDD<String> flights) {
+
+    }
 }
