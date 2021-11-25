@@ -24,7 +24,7 @@ public class MaxDelayTimeCounter {
         JavaRDD<String> flights = sc.textFile("664600583_T_ONTIME_sample.csv");
 
         JavaPairRDD<Tuple2<String, String>, FlightStat> parsedFlights = parseFlights(flights);
-        parsedFlights.aggregateByKey(FlightsStat :: new, FlightsStat :: addFlightStat, FlightStat :: combine)
+        JavaPairRDD<Tuple2<String, String>, FlightsStat> flightsStat = parsedFlights.aggregateByKey(new FlightsStat(), FlightsStat.addFlightStat(FlightStat), FlightsStat.combine())
     }
 
     public static JavaPairRDD<Tuple2<String, String>, FlightStat> parseFlights(JavaRDD<String> flights) {

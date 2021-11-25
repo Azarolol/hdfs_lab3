@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00cebd36-cb72-4cd9-a078-ee6c8ca2890f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/hdfs/lab3/azarolol/FlightsStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hdfs/lab3/azarolol/FlightsStat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hdfs/lab3/azarolol/MaxDelayTimeCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hdfs/lab3/azarolol/MaxDelayTimeCounter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +53,7 @@
       <workItem from="1636655382986" duration="1327000" />
       <workItem from="1636656823152" duration="1698000" />
       <workItem from="1636991208483" duration="10000" />
-      <workItem from="1637843028091" duration="4603000" />
+      <workItem from="1637843028091" duration="5099000" />
     </task>
     <servers />
   </component>
