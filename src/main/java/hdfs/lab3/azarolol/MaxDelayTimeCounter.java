@@ -54,8 +54,14 @@ public class MaxDelayTimeCounter {
                     String destinationAirportID = flightInformation[DEST_AIRPORT_ID_INDEX];
                     Tuple2<String, String> key = new Tuple2<>(departureAirportID, destinationAirportID);
                     boolean ifCancelled = Objects.equals(flightInformation[CANCELLED_INDEX], "1.00");
-                    float delayTime = Float.parseFloat(flightInformation[DELAY_INDEX]);
-                    FlightStat value = new FlightStat(ifCancelled, delayTime);
+                    String delayTime = flightInformation[DELAY_INDEX];
+                    float delayTimeParsed;
+                    if (delayTime != "") {
+                         delayTimeParsed = Float.parseFloat(flightInformation[DELAY_INDEX]);
+                    } else {
+                        delayTimeParsed = 0;
+                    }
+                    FlightStat value = new FlightStat(ifCancelled, delayTimeParsed);
                     return new Tuple2<>(key, value);
                 }
         );
