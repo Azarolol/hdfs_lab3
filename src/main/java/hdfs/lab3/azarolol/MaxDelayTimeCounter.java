@@ -20,6 +20,8 @@ public class MaxDelayTimeCounter {
     }
 
     public JavaPairRDD<Tuple2<String, String>, FlightsStat> parseFlights(JavaRDD<String> flights) {
-        
+        return flights.mapToPair(
+                s -> 
+        )
     }
 }
