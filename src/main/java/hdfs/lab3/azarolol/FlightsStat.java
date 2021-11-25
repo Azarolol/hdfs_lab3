@@ -79,6 +79,8 @@ public class FlightsStat implements Serializable {
 
     @Override
     public String toString() {
-        String 
+        String percentageOfCancelledFlights = String.valueOf(this.numberOfCancelledFlights / this.numberOfFlights);
+        String percentageOfDelayedFlights = String.valueOf(this.numberOfDelayedFlights / this.numberOfFlights);
+        
     }
 }
