@@ -23,13 +23,15 @@ public class MaxDelayTimeCounter {
     final static String AIRPORTS_FIRST_LINE_PREFIX = "C";
     final static String EMPTY_STRING = "";
     final static String CANCELLED_STATUS = "1.00";
+    final static String AIRPORTS_FILENAME = "L_AIRPORT_ID.csv";
+    final static String FLIGHTS_FILENAME = "664600583_T_ONTIME_sample.csv";
 
     public static void main (String[] args) {
         SparkConf conf = new SparkConf().setAppName(AppName);
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> airports = sc.textFile("L_AIRPORT_ID.csv");
-        JavaRDD<String> flights = sc.textFile("664600583_T_ONTIME_sample.csv");
+        JavaRDD<String> airports = sc.textFile(AIRPORTS_FILENAME);
+        JavaRDD<String> flights = sc.textFile(FLIGHTS_FILENAME);
 
         JavaPairRDD<Tuple2<String, String>, FlightStat> parsedFlights = parseFlights(flights.filter(
                 s -> !s.startsWith(FLIGHTS_FIRST_LINE_PREFIX)
